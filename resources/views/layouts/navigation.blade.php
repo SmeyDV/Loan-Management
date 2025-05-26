@@ -21,6 +21,9 @@
                             {{ __('Create Loan') }}
                         </span>
                     </x-nav-link>
+                    <x-nav-link :href="route('customers.index')" :active="request()->routeIs('customers.*')">
+                        {{ __('Customers') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -89,7 +92,11 @@
                     <span class="text-green-600 dark:text-green-400 mr-1">+</span>
                     {{ __('Create Loan') }}
                 </span>
+                 <x-nav-link :href="route('customers.index')" :active="request()->routeIs('customers.*')">
+                {{ __('Customers') }}
+            </x-nav-link>
             </x-responsive-nav-link>
+           
 
 
         </div>
@@ -115,6 +122,7 @@
                 <x-responsive-nav-link :href="route('profile.edit')">
                     {{ __('Profile') }}
                 </x-responsive-nav-link>
+
 
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">

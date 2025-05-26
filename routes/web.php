@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoanController;
+use App\Http\Controllers\CustomerController;
+
+Route::resource('customers', CustomerController::class)->middleware('auth');
+
 
 
 
