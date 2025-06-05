@@ -8,7 +8,8 @@
     <div class="py-12">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-6">
-                <form method="POST" action="{{ route('loans.store') }}">
+                <form method="POST" action="{{ route('loans.store') }}" enctype="multipart/form-data">
+
                     @csrf
 
                     {{-- Customer Name (English) --}}
@@ -66,6 +67,14 @@
                             <option value="completed">Completed</option>
                         </select>
                     </div>
+
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Upload Photo</label>
+                        <input type="file" name="photo" accept="image/*"
+                            class="mt-1 block w-full rounded-md border-gray-300 dark:bg-gray-900 dark:text-white" />
+                    </div>
+
+
 
                     <div class="flex justify-end">
                         <a href="{{ route('loans.index') }}" class="mr-4 text-sm text-gray-600 dark:text-gray-400 hover:underline">Cancel</a>

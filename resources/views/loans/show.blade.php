@@ -1,3 +1,7 @@
+@if ($loan->photo_path)
+    <img src="{{ asset('storage/' . $loan->photo_path) }}" class="h-32 rounded shadow" alt="Loan Photo">
+@endif
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="text-xl font-semibold dark:text-white">Loan Details</h2>

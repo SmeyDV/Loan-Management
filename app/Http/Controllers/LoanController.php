@@ -38,15 +38,23 @@ class LoanController extends Controller
             'interest_rate' => 'required|numeric|min:0',
             'starting_date' => 'required|date',
             'loan_term' => 'required|integer|min:1',
+            'photo' => 'nullable|image|max:2048',
+        ]);
+        $photoPath = null;
+        if ($request->hasFile('photo')) {
+            $photoPath = $request->file('photo')->store('loan_photos', 'public');
+        }
+
+        $loan = \App\Models\Loan::create([
+            // existing fields...
+            'photo_path' => $photoPath,
         ]);
 
-        // Create customer first
         $customer = \App\Models\Customer::create([
             'name' => $request->customer_name,
             'khmer_name' => $request->customer_khmer_name,
-            'phone' => 'N/A',
+            'phone' => 'N/A', // or collect this from form if needed
         ]);
-
         // Create loan and save currency from form
         \App\Models\Loan::create([
             'customer_id' => $customer->id,
